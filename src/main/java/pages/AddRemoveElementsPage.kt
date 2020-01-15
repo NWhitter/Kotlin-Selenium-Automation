@@ -1,0 +1,43 @@
+package pages
+
+import org.openqa.selenium.By
+import org.openqa.selenium.WebDriver
+import org.openqa.selenium.WebElement
+import org.openqa.selenium.support.FindBy
+import org.openqa.selenium.support.PageFactory
+
+class AddRemoveElementsPage(driver: WebDriver) : Page(driver) {
+    // lateinit => variable where null is an invalid state, but variable cannot be populated in the constructor (maybe initialized via dependency injection/setup method, use only when your sure it will be initialized!
+    @FindBy(css = "#content > div > button")
+    private lateinit var addButton: WebElement
+    private val deleteButtonsLocator = By.className("added-manually")
+
+    init {
+        visit()
+        PageFactory.initElements(driver, this)
+    }
+
+    fun visit() {
+        visit("https://the-internet.herokuapp.com/add_remove_elements/")
+    }
+
+    fun clickAddButton(noClicks: Int = 1) {
+        var i = 0
+        while (i < noClicks) {
+            addButton.click()
+            i++
+        }
+    }
+
+    fun clickDeleteButton(buttonNo: Int = 0) {
+        getDeleteButtons()[buttonNo].click()
+    }
+
+    fun clickDeleteButton(button: WebElement) {
+        clickDeleteButton(getDeleteButtons().indexOf(button))
+    }
+
+    fun getDeleteButtons(): List<WebElement> {
+        return driver.findElements(deleteButtonsLocator)
+    }
+}
