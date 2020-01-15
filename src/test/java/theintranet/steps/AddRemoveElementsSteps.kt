@@ -39,7 +39,7 @@ class AddRemoveElementsSteps {
 
     @Then("{int} delete element buttons should be displayed")
     fun deleteElementButtonsShouldBeDisplay(noClicks: Int?) {
-        assert(addRemoveElementsPage.getDeleteButtons().size == 32)
+        assert(addRemoveElementsPage.getDeleteButtons().size == noClicks)
     }
 
     @After
