@@ -22,19 +22,13 @@ class AddRemoveElementsPage(driver: WebDriver) : Page(driver) {
     }
 
     fun clickAddButton(noClicks: Int = 1) {
-        var i = 0
-        while (i < noClicks) {
+        for (i in 0 until noClicks) {
             addButton.click()
-            i++
         }
     }
 
     fun clickDeleteButton(buttonNo: Int = 0) {
         getDeleteButtons()[buttonNo].click()
-    }
-
-    fun clickDeleteButton(button: WebElement) {
-        clickDeleteButton(getDeleteButtons().indexOf(button))
     }
 
     fun getDeleteButtons(): List<WebElement> {

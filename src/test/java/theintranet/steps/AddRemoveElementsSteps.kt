@@ -3,6 +3,7 @@ package theintranet.steps
 import driver.DriverManager
 import io.cucumber.java.After
 import io.cucumber.java.Before
+import io.cucumber.java.en.And
 import io.cucumber.java.en.Given
 import io.cucumber.java.en.Then
 import io.cucumber.java.en.When
@@ -22,24 +23,22 @@ class AddRemoveElementsSteps {
         addRemoveElementsPage.visit()
     }
 
-    @Given("the user adds {int} delete buttons")
+    @And("the user adds {int} delete buttons")
     @When("the user clicks on the add element button {int} times")
     fun theUserClicksOnTheAddElementButtonTimes(noClicks: Int) {
         addRemoveElementsPage.clickAddButton(noClicks)
     }
 
     @When("the user clicks the delete button {int} times")
-    fun theUserClicksOnTheDeleteButtonsTimes(noClicks: Int) {
-        val i = 0
-        while (i < noClicks) {
-            val button = addRemoveElementsPage.getDeleteButtons().first()
-            addRemoveElementsPage.clickDeleteButton(button)
+    fun theUserClicksOnTheDeleteButtonsTimes(deleteClicks: Int) {
+        for (i in 0 until deleteClicks) {
+            addRemoveElementsPage.clickDeleteButton(0)
         }
     }
 
     @Then("{int} delete element buttons should be displayed")
-    fun deleteElementButtonsShouldBeDisplay(noClicks: Int?) {
-        assert(addRemoveElementsPage.getDeleteButtons().size == noClicks)
+    fun deleteElementButtonsShouldBeDisplay(buttonsLeft: Int?) {
+        assert(addRemoveElementsPage.getDeleteButtons().size == buttonsLeft)
     }
 
     @After

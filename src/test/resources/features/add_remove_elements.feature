@@ -15,11 +15,11 @@ Feature: Add remove elements
       | 10     |
 
   Scenario Outline: Remove buttons
-    And the user adds <noClicks> delete buttons
-    When the user clicks the delete button <delete> times
-    Then <clicks> delete element buttons should be displayed
+    And the user adds <addClicks> delete buttons
+    When the user clicks the delete button <deleteClicks> times
+    Then <buttonsLeft> delete element buttons should be displayed
 
     Examples: Buttons
-      | noClicks | delete | clicks
-      | 1        | 1      | 0
-      | 4        | 2      | 2
+      | addClicks | deleteClicks | buttonsLeft |
+      | 1         | 1            | 0           |
+      | 4         | 2            | 2           |
