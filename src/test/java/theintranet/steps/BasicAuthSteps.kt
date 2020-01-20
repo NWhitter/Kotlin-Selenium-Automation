@@ -13,7 +13,8 @@ class BasicAuthSteps {
 
     @Before
     fun openBrowser() {
-        basicAuthPage = BasicAuthPage(DriverManager().initDriver())
+        val driver = DriverManager().initDriver()
+        basicAuthPage = BasicAuthPage(driver)
     }
 
     @Given("a web browser is on the add basic auth page")
@@ -25,18 +26,6 @@ class BasicAuthSteps {
     fun theUserClicksCancelButtonOnTheLoginDialog() {
         basicAuthPage.dismissAlert()
     }
-
-//    @When("the user clicks the delete button {int} times")
-//    fun theUserClicksOnTheDeleteButtonsTimes(deleteClicks: Int) {
-//        for (i in 0 until deleteClicks) {
-//            addRemoveElementsPage.clickDeleteButton(0)
-//        }
-//    }
-//
-//    @Then("{int} delete element buttons should be displayed")
-//    fun deleteElementButtonsShouldBeDisplay(buttonsLeft: Int?) {
-//        assert(addRemoveElementsPage.getDeleteButtons().size == buttonsLeft)
-//    }
 
     @After
     fun closeBrowser() {

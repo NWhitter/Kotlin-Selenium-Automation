@@ -1,24 +1,14 @@
 package pages
 
 import org.openqa.selenium.WebDriver
-import org.openqa.selenium.support.PageFactory
 
 class BasicAuthPage(driver: WebDriver) : Page(driver) {
 
-    fun visit() {
-        visit(getBaseUrl() + "/basic_auth")
-        PageFactory.initElements(driver, this)
-    }
+    fun visit() = visit(getBaseUrl() + "/basic_auth")
 
-    fun dismissAlert() {
-        driver.switchTo().alert().dismiss()
-    }
+    fun dismissAlert() = driver.switchTo().alert().dismiss()
 
-    fun okAlert() {
-        driver.switchTo().alert().accept()
-    }
+    fun okAlert() = driver.switchTo().alert().accept()
 
-    fun fill() {
-        driver.switchTo().alert().sendKeys("Boo")
-    }
+    fun fill() = driver.switchTo().alert().sendKeys("Boo")
 }

@@ -20,11 +20,7 @@ abstract class Page(internal var driver: WebDriver) {
         wait.until { executor.executeScript("return document.readyState") == "complete" }
     }
 
-    fun getBaseUrl(): String? {
-        return PropertyLoader().getProperty("baseUrl")
-    }
+    fun getBaseUrl(): String = PropertyLoader().getProperty("baseUrl")
 
-    fun close() {
-        driver.quit()
-    }
+    fun close() = driver.quit()
 }

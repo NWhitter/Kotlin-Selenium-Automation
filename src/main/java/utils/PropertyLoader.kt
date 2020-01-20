@@ -15,7 +15,5 @@ class PropertyLoader {
         props.putAll(System.getProperties()) // Override properties with command line arguments
     }
 
-    fun getProperty(name: String?): String? {
-        return props.getProperty(name)
-    }
+    fun getProperty(name: String?): String = props.getProperty(name)
 }

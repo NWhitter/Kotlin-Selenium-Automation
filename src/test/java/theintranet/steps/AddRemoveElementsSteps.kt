@@ -19,15 +19,11 @@ class AddRemoveElementsSteps {
     }
 
     @Given("a web browser is on the add remove elements page")
-    fun aWebBrowserIsOnTheAddRemoveElementsPage() {
-        addRemoveElementsPage.visit()
-    }
+    fun aWebBrowserIsOnTheAddRemoveElementsPage() = addRemoveElementsPage.visit()
 
     @And("the user adds {int} delete buttons")
     @When("the user clicks on the add element button {int} times")
-    fun theUserClicksOnTheAddElementButtonTimes(noClicks: Int) {
-        addRemoveElementsPage.clickAddButton(noClicks)
-    }
+    fun theUserClicksOnTheAddElementButtonTimes(noClicks: Int) = addRemoveElementsPage.clickAddButton(noClicks)
 
     @When("the user clicks the delete button {int} times")
     fun theUserClicksOnTheDeleteButtonsTimes(deleteClicks: Int) {
@@ -37,12 +33,9 @@ class AddRemoveElementsSteps {
     }
 
     @Then("{int} delete element buttons should be displayed")
-    fun deleteElementButtonsShouldBeDisplay(buttonsLeft: Int?) {
-        assert(addRemoveElementsPage.getDeleteButtons().size == buttonsLeft)
-    }
+    fun deleteElementButtonsShouldBeDisplay(buttonsLeft: Int?) =
+            assert(addRemoveElementsPage.getDeleteButtons().size == buttonsLeft)
 
     @After
-    fun closeBrowser() {
-        addRemoveElementsPage.close()
-    }
+    fun closeBrowser() = addRemoveElementsPage.close()
 }
