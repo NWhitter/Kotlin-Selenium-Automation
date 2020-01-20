@@ -10,8 +10,4 @@ class DriverManager {
         driver = DriverManagerFactory().make("CHROME")
         return driver
     }
-
-    fun close() {
-        driver.close()
-    }
 }
